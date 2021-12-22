@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import './App.css'
+import Circles from './components/Circles'
+import CircleSelector from './components/CircleSelector'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [selectCircle, setselectCircle] = useState(Array(4).fill(false))
 
-export default App;
+  const handleSelectedCircle = (selectedDog) => {
+    setselectCircle(selectCircle.map((selectCircle, idx) => (
+      selectedDog === idx ? true : false
+    )))
+  }
+
+    return (
+      <div className="App">
+        <header className="App-header">Unit 4 Assessment</header>
+        <main>
+   
+        <CircleSelector 
+        selectCircle={selectCircle} 
+        handleSelectedCircle={handleSelectedCircle}
+        />
+  
+        <div>
+        <Circles 
+        selectCircle={selectCircle} 
+        handleSelectedCircle={handleSelectedCircle}
+        />
+        </div>
+        </main>
+      </div>
+    )
+  }
+
+
+export default App
